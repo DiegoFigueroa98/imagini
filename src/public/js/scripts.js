@@ -1,4 +1,10 @@
 $(function() {
+  // Post Toggle View
+  $('#post-comment').hide();
+  $('#btn-toggle-comment').click(e => {
+    e.preventDefault();
+    $('#post-comment').slideToggle();
+  });
   
   // Like Button Request
   $('#btn-like').click(function(e) {

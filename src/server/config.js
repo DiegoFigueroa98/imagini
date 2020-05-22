@@ -8,6 +8,8 @@ const Handlebars = require('handlebars');
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const session = require('express-session');
+const passport = require('passport');
+require('../config/passport');
 
 const routes = require('../routes');
 
@@ -37,6 +39,14 @@ module.exports = app => {
     resave: true,
     saveUninitialized: true
   }));
+  app.use(passport.initialize());
+  app.use(passport.session());
+
+  // Global Variables
+  app.use((req, res, next) => {
+    app.locals.user = req.user || null;
+    next();
+  });
 
   // Routes
   routes(app);
