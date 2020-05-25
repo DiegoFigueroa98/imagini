@@ -19,3 +19,8 @@ body {
 .bg-dark, .btn-info {
   background: rgb(0, 60, 80) !important;
 }
+
+.hidden {
+  display: none;
+}
+
