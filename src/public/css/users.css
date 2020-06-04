@@ -1,0 +1,37 @@
+@import url("https://fonts.googleapis.com/css2?family=Roboto:wght@400;500&display=swap");
+
+body {
+  /*background: #dff9fb;*/
+  background-image: url(../images/autentication.jpeg);
+  background-repeat: no-repeat;
+  background-size: 100%;
+  width: 100vw;
+  height: 100vh;
+}
+
+.navbar-brand img {
+  width: 10%;
+  margin-right: 0.8rem;
+  letter-spacing: 2em;
+  position: relative;
+}
+
+* {
+  font-family: "Roboto", sans-serif;
+  font-size: 1rem;
+}
+
+.bg-dark,
+.btn-info,
+.btn-primary {
+  background: rgb(0, 60, 80) !important;
+}
+
+.card-header {
+  font-weight: 500;
+}
+
+p.text-header {
+  font-size: 1.2em;
+  font-weight: 500;
+}

@@ -2,9 +2,12 @@ const path = require('path');
 const morgan = require('morgan');
 const express = require('express');
 const errorHandler = require('errorhandler');
-const multer = require('multer');
 const exphbs = require('express-handlebars');
 const Handlebars = require('handlebars');
+const multer = require('multer');
+const methodOverride = require('method-override');
+const flash = require('connect-flash');
+
 const {allowInsecurePrototypeAccess} = require('@handlebars/allow-prototype-access')
 
 const session = require('express-session');
@@ -31,6 +34,7 @@ module.exports = app => {
 
   // middlewares
   app.use(morgan('dev'));
+  app.use(methodOverride('_method'));
   app.use(express.urlencoded({extended: false}));
   app.use(express.json());
 
@@ -41,10 +45,14 @@ module.exports = app => {
   }));
   app.use(passport.initialize());
   app.use(passport.session());
+  app.use(flash());
 
   // Global Variables
   app.use((req, res, next) => {
-    app.locals.user = req.user || null;
+    res.locals.success_msg = req.flash('success_msg');
+    res.locals.error_msg = req.flash('error_msg');
+    res.locals.error = req.flash('error');
+    res.locals.user = req.user || null;
     next();
   });
 

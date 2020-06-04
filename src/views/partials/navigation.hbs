@@ -11,11 +11,11 @@
     <div class="collapse navbar-collapse" id="navbarNav">
       <ul class="navbar-nav ml-auto">
         {{#unless user}}
-        <li class="nav-item hidden">
-          <a class="nav-link hidden" href="/signin">SignIn</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/signin">Sign In</a>
         </li>
-        <li class="nav-item hidden">
-          <a class="nav-link hidden" href="/signup">SignUp</a>
+        <li class="nav-item">
+          <a class="nav-link" href="/users/signup">Sign Up</a>
         </li>
         {{else}}
            <li class="nav-item dropdown">
@@ -23,7 +23,7 @@
           Profile
         </a>
         <div class="dropdown-menu" aria-labelledby="navbarDropdown">
-          <a class="dropdown-item" href="/logout">Logout</a>
+          <a class="dropdown-item" href="/users/logout">Logout</a>
         </div>
       </li>
         {{/unless}}
