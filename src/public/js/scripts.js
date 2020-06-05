@@ -33,6 +33,7 @@ $(function() {
           $this.removeClass('btn-danger').addClass('btn-success');
           $this.find('i').removeClass('fa-times').addClass('fa-check');
           $this.append('<span>Deleted!</span>');
+          window.location = '/'
         });
     }
   });

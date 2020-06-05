@@ -8,6 +8,7 @@ const ctrl = {};
 const sidebar = require('../helpers/sidebar');
 const { randomNumber } = require('../helpers/libs');
 const { Image, Comment } = require('../models');
+var gm = require('gm').subClass({imageMagick: true});
 
 ctrl.index = async (req, res) => {
   let viewModel = { image: {}, comments: [] };
@@ -27,6 +28,16 @@ ctrl.index = async (req, res) => {
 };
 
 ctrl.create = (req, res) => {
+  gm(req.file.path)
+  .size(function (err, size) {
+    if (!err) {
+      console.log('width = ' + size.width);
+      console.log('height = ' + size.height);
+      alert(size.width);
+      alert(size.height);
+    }
+  });
+
   const saveImage = async () => {
     const imgUrl = randomNumber();
     const images = await Image.find({ filename: imgUrl });
@@ -44,14 +55,17 @@ ctrl.create = (req, res) => {
         await fs.rename(imageTempPath, targetPath);
         const newImg = new Image({
           title: req.body.title,
-          filename: imgUrl + ext,
-          description: req.body.description
+          description: req.body.description,
+          user: req.user.id,
+          filename: imgUrl + ext
         });
         const imageSaved = await newImg.save();
+        req.flash("success_msg", "Image upload successfully");
         res.redirect('/images/' + imageSaved.uniqueId);
       } else {
         await fs.unlink(imageTempPath);
-        res.status(500).json({ error: 'Only Images are allowed' });
+        req.flash('error_msg', 'Only .png .jpg .jpeg .gif formats and (400x400) size are allowed');
+        res.redirect("/users/upload");
       }
     }
   };

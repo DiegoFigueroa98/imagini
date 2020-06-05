@@ -1,41 +1,49 @@
 <!DOCTYPE html>
 <html lang="en">
-  <head>
-    <meta charset="UTF-8">
-    {{>head}}
-  </head>
-  <body>
-    {{>navigation}}
 
-    <div class="container p-4">
+<head>
+  <meta charset="UTF-8">
+  {{>head}}
+  <!-- CUSTOM CSS -->
+  <link rel="stylesheet" href="/public/css/styles.css">
+</head>
+
+<body>
+  {{>navigation}}
+
+  <div class="container p-4">
+    {{>messages}}
+    {{>errors}}
+    <div class="row">
+      <div class="col-md-8">
+        {{{ body  }}}
+      </div>
+      <div class="col-md-4">
+        {{>stats this}}
+        {{>popular this}}
+        {{>comments this}}
+      </div>
+    </div>
+  </div>
+
+  <!-- FOOTER -->
+  <footer class="bg-dark text-white">
+    <div class="container p-2">
       <div class="row">
-        <div class="col-md-8">
-          {{{ body  }}} 
-        </div>
-        <div class="col-md-4">
-          {{>stats this}}
-          {{>popular this}}
-          {{>comments this}}
+        <div class="mx-auto text-center">
+          <p>Imagini | Diego, Brayan, Rafael {{getCurrentYear}}, Instituto Tecnológico de Colima</p>
+          <p>
+            <i class="fab fa-twitter-square fa-2x"></i>
+            <i class="fab fa-facebook-square fa-2x"></i>
+          </p>
         </div>
       </div>
     </div>
+  </footer>
 
-    <!-- FOOTER -->
-    <footer class="bg-dark text-white">
-      <div class="container p-2">
-        <div class="row">
-          <div class="mx-auto text-center">
-              <p>Imagini | Diego, Brayan, Rafael {{getCurrentYear}}, Instituto Tecnológico de Colima</p>            <p>
-              <i class="fab fa-twitter-square fa-2x"></i>
-              <i class="fab fa-facebook-square fa-2x"></i>
-            </p>
-          </div>
-        </div>
-      </div>
-    </footer>
+  <!-- SCRIPTS -->
+  {{>footer}}
+  <script src="/public/js/scripts.js"></script>
+</body>
 
-    <!-- SCRIPTS -->
-    {{>footer}}
-    <script src="/public/js/scripts.js"></script>
-  </body>
 </html>
