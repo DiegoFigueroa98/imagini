@@ -54,12 +54,12 @@ p.text-header {
 }
 
 .card {
-  max-width: 15em;
-  max-height: 15em;
+  max-width: 20em;
+  max-height: 20em;
   margin-right: 1em;
 }
 
 .card img {
-  max-height: 8em;
-  object-fit: cover;
-}
+    max-height: 13em;
+    object-fit: cover;
+  }

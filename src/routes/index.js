@@ -34,6 +34,8 @@ module.exports = app => {
 
   router.get('/users/upload', isAuthenticated, home.upload);
 
+  router.get('/users/profile', isAuthenticated, home.profile);
+
   router.get("/users/logout", user.logout);
 
   app.use(router);

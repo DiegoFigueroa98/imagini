@@ -33,8 +33,6 @@ ctrl.create = (req, res) => {
     if (!err) {
       console.log('width = ' + size.width);
       console.log('height = ' + size.height);
-      alert(size.width);
-      alert(size.height);
     }
   });
 
