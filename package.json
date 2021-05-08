@@ -22,7 +22,7 @@
     "flash": "^1.1.0",
     "fs-extra": "^9.0.0",
     "gm": "^1.23.1",
-    "handlebars": "^4.7.6",
+    "handlebars": "^4.7.7",
     "image-size": "^0.8.3",
     "md5": "^2.2.1",
     "method-override": "^3.0.0",
